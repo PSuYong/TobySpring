@@ -1,4 +1,4 @@
-package com.intheeast.springframe.domain;
+package com.psuyong.springframe.domain;
 
 public class User {
 	String id;
