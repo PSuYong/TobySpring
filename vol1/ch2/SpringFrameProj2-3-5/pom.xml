@@ -20,6 +20,7 @@
         <artifactId>spring-context</artifactId>
         <version>5.3.20</version>
     </dependency>
+<<<<<<< HEAD
     <!--
     <dependency>
         <groupId>org.springframework</groupId>
@@ -28,6 +29,9 @@
         
     </dependency>
     -->
+=======
+    
+>>>>>>> main
 	
 	<dependency>
         <groupId>org.springframework</groupId>

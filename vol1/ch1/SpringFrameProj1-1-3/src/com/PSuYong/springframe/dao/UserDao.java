@@ -9,8 +9,9 @@ import com.psuyong.springframe.domain.User;
 
 public class UserDao {
 	public void add(User user) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/sbdt_db1?characterEncoding=UTF-8", 
+		Class.forName("com.mysql.cj.jdbc.Driver"); //
+		Connection c = DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/sbdt_db1?characterEncoding=UTF-8", 
 				"root",
 				"1234");
 
@@ -26,12 +27,13 @@ public class UserDao {
 		c.close();
 	}
 
-
 	public User get(String id) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/sbdt_db1?characterEncoding=UTF-8", 
+		Connection c = DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/sbdt_db1?characterEncoding=UTF-8", 
 				"root",
 				"1234");
+		
 		PreparedStatement ps = c
 				.prepareStatement("select * from users where id = ?");
 		ps.setString(1, id);
