@@ -43,10 +43,12 @@ public class UserDao {
 				.prepareStatement("select * from users where id = ?");
 		ps.setString(1, id);
 
-		ResultSet rs = ps.executeQuery();
+		ResultSet rs = ps.executeQuery();//커서역할
 		
 		User user = null;
+		//초기화
 		if (rs.next()) {
+			//특정 ID에 해당하는 값이 있을때 아래 실행.prepareStatement("select * from users where id = ?");
 			user = new User();
 			user.setId(rs.getString("id"));
 			user.setName(rs.getString("name"));

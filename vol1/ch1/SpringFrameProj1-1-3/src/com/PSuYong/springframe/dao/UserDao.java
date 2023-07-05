@@ -5,9 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.psuyong.springframe.domain.User;
-
 
 public class UserDao {
 	public void add(User user) throws ClassNotFoundException, SQLException {

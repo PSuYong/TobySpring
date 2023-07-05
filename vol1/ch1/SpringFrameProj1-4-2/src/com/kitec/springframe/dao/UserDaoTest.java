@@ -8,21 +8,22 @@ import com.kitec.springframe.domain.User;
 public class UserDaoTest {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		UserDao dao = new UserDaoFactory().userDao();
+		//mainì—ì„œ ì§ì ‘ì ì¸ ì ‘ê·¼ì„ í–ˆë‹¤ë©´ ì´ì œëŠ” ê·¸ê²ƒì„ userdaofactoryì— ìœ„ì„í•¨
 
 		User user = new User();
 		user.setId("whiteship");
-		user.setName("¹é±â¼±");
+		user.setName("ï¿½ï¿½â¼±");
 		user.setPassword("married");
 
 		dao.add(user);
 			
-		System.out.println(user.getId() + " µî·Ï ¼º°ø");
+		System.out.println(user.getId() + " ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		
 		User user2 = dao.get(user.getId());
 		System.out.println(user2.getName());
 		System.out.println(user2.getPassword());
 			
-		System.out.println(user2.getId() + " Á¶È¸ ¼º°ø");
+		System.out.println(user2.getId() + " ï¿½ï¿½È¸ ï¿½ï¿½ï¿½ï¿½");
 	}
 
 }

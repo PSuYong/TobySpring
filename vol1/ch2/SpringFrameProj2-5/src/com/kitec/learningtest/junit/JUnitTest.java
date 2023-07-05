@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;
 import java.util.Set;
+//중복허용을 하지 않는
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +26,8 @@ public class JUnitTest {
 	@Test 
 	public void test1() {		
 		assertFalse(testObjects.contains(this));
-		testObjects.add(this);		
+		testObjects.add(this);
+		//null값이어야만 add메소드로 통과함
 		
 		assertTrue(contextObject == null || contextObject == this.context);		
 		contextObject = this.context;

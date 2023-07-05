@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -24,6 +25,10 @@ public class UserDaoTest {
 	private User user1;
 	private User user2;
 	private User user3;	
+	
+	public UserDaoTest() {
+		
+	}
 		
 	@BeforeEach
 	public void setUp() {	
@@ -70,7 +75,15 @@ public class UserDaoTest {
 	@Test
 	public void getUserFailure() throws SQLException, ClassNotFoundException {		
 		dao.deleteAll();
-		assertEquals(dao.getCount(), 0);		
+		assertEquals(dao.getCount(), 0);
+		
+		//throwable 알아보기
+		//execute의 몸통이 dao.get("unknown ~"
+		//람다 표현식은 익명클래스를 대체하기 위하여 사용된다.
+		//인터페이스를 구현한게 익명클래스
+		//자바 함수형 인터페이스 다시보기 org.junit.jupiter.api.function.Executable
+		//public static <T extends Throwable> T assertThrows(Class<T> expectedType, Executable executable)
+		
 		
 		Assertions.assertThrows(EmptyResultDataAccessException.class, 
 				() -> {dao.get("unknown_id");});	

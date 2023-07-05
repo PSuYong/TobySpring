@@ -19,11 +19,15 @@ import com.kitec.springframe.domain.User;
 
 
 @ExtendWith(SpringExtension.class)
+//이제는 스프링 프레임워크랑 Junit이랑 같이 쓰겠다.
 @ContextConfiguration(classes = {DaoFactory.class})
+//자바기반의 컨피규레이션 메타데이터를 사용한다.
 public class UserDaoTest { 
 	
 	@Autowired
 	ApplicationContext context;
+	//autowired는 어노테이션을 통해 스프링 IOC 컨테이너속에서 해당 빈 객체를 알아서 찾아낸다?
+	//그리고 주입을 한다.
 	
 	private UserDao dao;
 	
