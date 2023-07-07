@@ -29,6 +29,7 @@ public class UserDaoTest {
 	 
 	@Autowired UserDao dao; 
 	@Autowired DataSource dataSource;
+	@Autowired UserDaoSql userDaosql;
 	
 	private User user1;
 	private User user2;
@@ -146,6 +147,20 @@ public class UserDaoTest {
 			SQLExceptionTranslator set = new SQLErrorCodeSQLExceptionTranslator(this.dataSource);			
 			DataAccessException transEx = set.translate(null, null, sqlEx);
 			assertEquals(DuplicateKeyException.class, transEx.getClass());
+		}
+	}
+	
+	@Test
+	public void sqlExceptionTranslate2() {
+		dao.deleteAll();
+		
+		try {
+			UserDaoSql add.(user1)
+			UserDaoSql add.(user1)
+
+		}//org.springframework.dao.DuplicateKeyException
+		catch(SQLException ex) {
+			//ex -> DuplicateKeyException 바꿔라
 		}
 	}
 

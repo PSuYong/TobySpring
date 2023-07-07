@@ -28,5 +28,12 @@ public class DaoFactory {
 		userDaoJdbc.setDataSource(dataSource());
 		return userDaoJdbc;
 	}
+	
+	@Bean
+	public UserDaoSql userDaosql() {
+		UserDaoSql userDaoSql = new UserDaoSql();
+		userDaoSql.setDataSource(dataSource());
+		return userDaoSql;
+	}
 
 }
