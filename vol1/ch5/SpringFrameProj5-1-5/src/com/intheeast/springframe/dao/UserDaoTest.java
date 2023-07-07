@@ -21,17 +21,17 @@ import org.springframework.jdbc.support.SQLExceptionTranslator;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.intheeast.springframe.domain.Level;
 import com.intheeast.springframe.domain.User;
-import com.mysql.cj.exceptions.MysqlErrorNumbers;
+
+
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {TestDaoFactory.class})
 public class UserDaoTest {	
 	 
 	@Autowired UserDao dao; 
-	@Autowired UserDaoSql userDaoSql;
 	@Autowired DataSource dataSource;
-	@Autowired UserDaoSql userDaosql;
 	
 	private User user1;
 	private User user2;
@@ -41,9 +41,9 @@ public class UserDaoTest {
 	@BeforeEach
 	public void setUp() {	
 		
-		this.user1 = new User("gyumee", "sungkim", "springno1");
-		this.user2 = new User("leegw700", "brucelee", "springno2");
-		this.user3 = new User("bumjin", "haechoi", "springno3");
+		this.user1 = new User("gyumee", "박성철", "springno1", Level.BASIC, 1, 0);
+		this.user2 = new User("leegw700", "이길원", "springno2", Level.SILVER, 55, 10);
+		this.user3 = new User("bumjin", "박범진", "springno3", Level.GOLD, 100, 40);
 	}
 	
 	@Test
@@ -126,6 +126,10 @@ public class UserDaoTest {
 		assertEquals(user1.getId(), user2.getId());
 		assertEquals(user1.getName(), user2.getName());
 		assertEquals(user1.getPassword(), user2.getPassword());
+		
+		assertEquals(user1.getLevel(), user2.getLevel());
+		assertEquals(user1.getLogin(), user2.getLogin());
+		assertEquals(user1.getRecommend(), user2.getRecommend());
 	}
 	
 	@Test
@@ -143,7 +147,7 @@ public class UserDaoTest {
 		try {
 			dao.add(user1);
 			dao.add(user1);
-		} //org.springframework.dao.DuplicateKeyException
+		}
 		catch(DuplicateKeyException ex) {
 			SQLException sqlEx = (SQLException)ex.getCause();
 			SQLExceptionTranslator set = new SQLErrorCodeSQLExceptionTranslator(this.dataSource);			
@@ -153,34 +157,42 @@ public class UserDaoTest {
 	}
 	
 	@Test
-<<<<<<< HEAD
-	public void sqlExceptionTranslate2() {
+	public void update() {
 		dao.deleteAll();
 		
-		try {
-			UserDaoSql add.(user1)
-			UserDaoSql add.(user1)
-
-		}//org.springframework.dao.DuplicateKeyException
-		catch(SQLException ex) {
-			//ex -> DuplicateKeyException 바꿔라
-=======
-	public void sqlExceptionTranslate2() throws ClassNotFoundException {
-		dao.deleteAll();
+		dao.add(user1);
+		dao.add(user2);
 		
-		try {
-			userDaoSql.add(user1);
-			userDaoSql.add(user1);
-		} //org.springframework.dao.DuplicateKeyException
-		catch(SQLException ex) {
-			System.out.println(ex);
-			if (ex.getErrorCode() == MysqlErrorNumbers.ER_DUP_ENTRY)
-				throw new DuplicateKeyException(ex.getMessage());
-			else
-				throw new RuntimeException(ex);
->>>>>>> e31ac4b86ce9f669ccd3e2c27afad49cd47a0d38
+		user1.setName("오민규");
+		user1.setPassword("springo6");
+		user1.setLevel(Level.GOLD);
+		user1.setLogin(1000);
+		user1.setRecommend(999);
+		dao.update(user1);
+		
+		Optional<User> Optuser1update = dao.get(user1.getId());
+		
+		if(!Optuser1update.isEmpty()) {
+			User user1update = Optuser1update.get();
+			checkSameUser(user1, user1update);
+		}	
+		
+		Optional<User> Optuser2update = dao.get(user2.getId());
+		
+		if(!Optuser2update.isEmpty()) {
+			User user2update = Optuser2update.get();
+			checkSameUser(user2, user2update);
 		}
 	}
+	
+//	@Test
+//	public void SimpleGetOne() {
+//		dao.deleteAll();		
+//		dao.add(user1);		
+//		
+//		// org.springframework.jdbc.InvalidResultSetAccessException
+//		dao.get(user1.getId());			
+//	}
 
 		
 }

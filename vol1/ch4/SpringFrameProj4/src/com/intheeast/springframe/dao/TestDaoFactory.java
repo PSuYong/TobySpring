@@ -32,9 +32,15 @@ public class TestDaoFactory {
 	@Bean
 	public UserDaoSql userDaosql() {
 		UserDaoSql userDaoSql = new UserDaoSql();
+<<<<<<< HEAD
 		userDaoSql.setDataSource(dataSource());
 		return userDaoSql;
 	}
+=======
+		return userDaoSql;
+	}
+
+>>>>>>> e31ac4b86ce9f669ccd3e2c27afad49cd47a0d38
 }
 
 
