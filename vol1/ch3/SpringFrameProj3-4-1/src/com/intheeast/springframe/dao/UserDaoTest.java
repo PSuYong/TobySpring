@@ -16,34 +16,24 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-<<<<<<< HEAD:vol1/ch2/SpringFrameProj2-5/src/com/kitec/springframe/dao/UserDaoTest.java
-import com.kitec.learningtest.junit.JUnitTest;
-import com.kitec.springframe.domain.User;
+import com.intheeast.springframe.domain.User;
 
 
 //@ExtendWith(SpringExtension.class)
 //@ContextConfiguration(classes = {TestDaoFactory.class})
 //@DirtiesContext 
-public class UserDaoTest { 
-=======
-import com.intheeast.springframe.domain.User;
-
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {TestDaoFactory.class})
 public class UserDaoTest {
->>>>>>> main:vol1/ch3/SpringFrameProj3-4-1/src/com/intheeast/springframe/dao/UserDaoTest.java
-	
 	//@Autowired
 	//private ApplicationContext context;	
 	 
 	@Autowired
-<<<<<<< HEAD:vol1/ch2/SpringFrameProj2-5/src/com/kitec/springframe/dao/UserDaoTest.java
 	ApplicationContext context;
+	//의존성 주입 autowired는
+	//자기자신을 참조하는 context필드도 일종의 빈객체이니까
 	
 	@Autowired
-=======
->>>>>>> main:vol1/ch3/SpringFrameProj3-4-1/src/com/intheeast/springframe/dao/UserDaoTest.java
 	private UserDao dao;
 	private User user1;
 	private User user2;
@@ -52,18 +42,15 @@ public class UserDaoTest {
 		
 	@BeforeEach
 	public void setUp() {	
-		
-<<<<<<< HEAD:vol1/ch2/SpringFrameProj2-5/src/com/kitec/springframe/dao/UserDaoTest.java
 		//this.dao = this.context.getBean("userDao", UserDao.class);
 		user1 = new User("user1", "sungkim", "5678");
 		user2 = new User("user2", "brucelee", "9012");
 		user3 = new User("user3", "haechoi", "1234");
-=======
+
 		user1 = new User("user1", "sungkim", "0000");
 		user2 = new User("user2", "brucelee", "1111");
 		user3 = new User("user3", "haechoi", "2222");
->>>>>>> main:vol1/ch3/SpringFrameProj3-4-1/src/com/intheeast/springframe/dao/UserDaoTest.java
-	}
+		}
 	
 	@Test
 	public void addAndGet() throws SQLException, ClassNotFoundException {				

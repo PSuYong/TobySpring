@@ -17,15 +17,17 @@ public class UserDao {
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-	
+	//jdbcContextWithStatementStrategy = 컨텍스트
 	public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
+		//전략패턴을 적용했다.
+		//클라이언트가 컨텍스트를 사용한다.
 		Connection c = null;
 		PreparedStatement ps = null;
 
 		try {
 			c = dataSource.getConnection();
 
-			ps = stmt.makePreparedStatement(c);
+			ps = stmt.makePreparedStatement(c);//전략
 		
 			ps.executeUpdate();
 		} catch (SQLException e) {

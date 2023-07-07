@@ -14,9 +14,14 @@ public class DaoFactory {
 		
 		SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
 		
+//		dataSource.setDriverClass(com.mysql.cj.jdbc.Driver.class);
+//		dataSource.setUrl("jdbc:mysql://localhost:3306/sbdt_db1?characterEncoding=UTF-8");
+//		dataSource.setUsername("root");
+//		dataSource.setPassword("1234");
+		
 		dataSource.setDriverClass(com.mysql.cj.jdbc.Driver.class);
-		dataSource.setUrl("jdbc:mysql://localhost:3306/sbdt_db1?characterEncoding=UTF-8");
-		dataSource.setUsername("root");
+		dataSource.setUrl("jdbc:mysql://192.168.0.47/sbdt_db1?characterEncoding=UTF-8");
+		dataSource.setUsername("kkh");
 		dataSource.setPassword("1234");
 
 		return dataSource;
